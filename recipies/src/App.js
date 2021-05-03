@@ -1,30 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Recipe from "./components/Recipe";
 import "./App.css";
+import axios from 'axios';
 
 const App = () => {
-
-
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    getRecipes();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
-
-    const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-
-    const data = await response.json();
-    setRecipes(data.hits);
-    console.log(data.hits);
-  };
+    useEffect(() => {
+      axios
+        .get(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+        .then((res) => {
+          console.log(res.data)
+          setRecipes(res.data.hits)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }, [query])
 
   const updateSearch = (e) => {
     setSearch(e.target.value);
@@ -57,6 +52,9 @@ const App = () => {
             calories={recipe.recipe.calories}
             image={recipe.recipe.image}
             ingredients={recipe.recipe.ingredients}
+            dishType={recipe.recipe.dishType}
+            cuisineType={recipe.recipe.cuisineType}
+            source={recipe.recipe.source}
           />
         ))}
       </div>

@@ -3,13 +3,67 @@
 .recipe_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    align-content: center;
+    margin: 0 1rem;
+    width: 100%;
+}
+
+.card_container {
     padding: 2rem;
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.card_container p {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #4d4a4a;
+    font-weight: 800;
+}
+
+.card_container ol li {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #4d4a4a;
+    font-weight: 800;
+    margin-left: 1rem;
 }
 
 .image {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(238, 232, 232, 0.5);
+    padding: 1rem;
+}
+
+img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+}
+
+div.ant-card-head-title {
+    font-size: 2rem;
+    color: #4d4a4a;
+    font-weight: 800;
+    text-align: center;
+}
+
+.ant-card {
+    padding: 0 6rem;
+    /* background-color: rgba(167, 164, 164, 0.5); */
+}
+
+.ant-card-body {
+    width: 100%;
+    padding: 1rem;
+
 }

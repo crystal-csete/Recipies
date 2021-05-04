@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Recipe from "./components/Recipe";
 import "./App.css";
+import { Button, Input, Card } from 'antd';
 import axios from 'axios';
 
 const App = () => {
+
+
 
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
@@ -32,19 +35,19 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={getSearch} className="search-form">
-        <input
-          className="search-bar"
+    <Card className="app_container">
+      <form onSubmit={getSearch} className="app_form">
+        <Input
           type="text"
+          placeholder="Search Recipes"
           value={search}
           onChange={updateSearch}
         />
-        <button className="search-button" type="submit">
+        <Button type="submit">
           Search
-        </button>
+        </Button>
       </form>
-      <div className="recipies">
+      <Card>
         {recipes.map((recipe) => (
           <Recipe
             key={recipe.recipe.label}
@@ -57,8 +60,8 @@ const App = () => {
             source={recipe.recipe.source}
           />
         ))}
-      </div>
-    </div>
+      </Card>
+    </Card>
   );
 };
 
